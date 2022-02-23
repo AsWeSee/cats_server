@@ -21,6 +21,6 @@ spec:
     spec:
       containers:
       - name: cats-server-python
-        image: cats_server_python
+        image: rungiantboom/kubertest
         ports:
         - containerPort: 8000
