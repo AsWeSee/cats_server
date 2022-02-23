@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cats-deployment
+  labels:
+    app: cats-deployment-label
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: cats-server
+  template:
+    metadata:
+      labels:
+        app: cats-server
+    spec:
+      containers:
+      - name: cats-server-python
+        image: cats_server_python
+        ports:
+        - containerPort: 8000
